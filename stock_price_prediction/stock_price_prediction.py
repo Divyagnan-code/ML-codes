@@ -27,8 +27,8 @@ df["label"] = df[close_col].shift(-forecast_shift)
 print(df.head())
 X = np.array(df.drop(["label"], axis=1))
 preprocessing.scale(X)
-X = X[:-forecast_shift]
 X_after = X[-forecast_shift:]
+X = X[:-forecast_shift]
 df.dropna(inplace=True)
 y = np.array(df["label"])
 train_X, test_X, train_y, test_y = train_test_split(X, y, test_size=0.2)
