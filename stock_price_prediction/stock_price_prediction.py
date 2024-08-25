@@ -14,7 +14,7 @@ df["HL_PCT"] = ((df['Adj. High'] - df['Adj. Close']) / df["Adj. Close"]) * 100
 df["PCT_Change"] = ((df['Adj. Close'] - df['Adj. Open']) / df["Adj. Open"]) * 100
 df = df[["HL_PCT", "PCT_Change", "Adj. Close", "Adj. Volume"]]  # choose the most valid columns
 close_col = "Adj. Close"
-forecast_shift = int(math.ceil(0.01 * len(df[close_col])))
+forecast_shift = int(math.ceil(0.01 * len(df[close_col])))  # After how many days you wanna predict the price
 df["label"] = df[close_col].shift(-forecast_shift)
 df.dropna(inplace=True)
 print(df.head())
